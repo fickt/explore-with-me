@@ -1,13 +1,22 @@
 version: '3.1'
 services:
+  gateway:
+    build: ./api-gateway
+    container_name: gateway
+    environment:
+      - EXPLORE-WITH-ME-SERVICE_URL=http://service:9091/explore-with-me-service
+
+    ports:
+      - "8080:8080"
+
 
   ewm-service:
     build: ./service
     container_name: service
     environment:
       - EXPLORE-WITH-ME-STATISTICS_URL=http://stats:9090
-  #  depends_on:
-  #    - gateway
+    depends_on:
+      - gateway
     ports:
       - "9091:9091"
 
@@ -15,9 +24,7 @@ services:
   stats-server:
     build: ./statistics
     container_name: stats
-   # depends_on:
-   #   - gateway
+    depends_on:
+      - gateway
     ports:
       - "9090:9090"
-
-
