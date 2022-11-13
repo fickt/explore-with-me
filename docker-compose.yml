@@ -6,8 +6,8 @@ services:
     container_name: service
     environment:
       - EXPLORE-WITH-ME-STATISTICS_URL=http://stats:9090
-    depends_on:
-      - gateway
+  #  depends_on:
+  #    - gateway
     ports:
       - "9091:9091"
 
@@ -15,8 +15,8 @@ services:
   stats-server:
     build: ./statistics
     container_name: stats
-    depends_on:
-      - gateway
+   # depends_on:
+   #   - gateway
     ports:
       - "9090:9090"
 
