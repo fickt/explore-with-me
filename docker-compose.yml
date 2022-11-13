@@ -1,14 +1,5 @@
 version: '3.1'
 services:
-  gateway:
-    build: ./api-gateway
-    container_name: gateway
-    environment:
-      - EXPLORE-WITH-ME-SERVICE_URL=http://service:9091/explore-with-me-service
-
-    ports:
-      - "8080:8080"
-
 
   ewm-service:
     build: ./service
