@@ -1,15 +1,32 @@
 version: '3.1'
 services:
-  stats-server:
-    ports:
-      - "9090:9090"
+  gateway:
+    build: ./api-gateway
+    container_name: gateway
+    environment:
+      - EXPLORE-WITH-ME-SERVICE_URL=http://service:9091/explore-with-me-service
 
-  stats-db:
-    image: postgres:14-alpine
-
-  ewm-service:
     ports:
       - "8080:8080"
 
-  ewm-db:
-    image: postgres:14-alpine
+
+  service:
+    build: ./service
+    container_name: service
+    environment:
+      - EXPLORE-WITH-ME-STATISTICS_URL=http://stats:9090
+    depends_on:
+      - gateway
+    ports:
+      - "9091:9091"
+
+
+  stats:
+    build: ./statistics
+    container_name: stats
+    depends_on:
+      - gateway
+    ports:
+      - "9090:9090"
+
+
