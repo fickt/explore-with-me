@@ -1,17 +1,18 @@
 package ru.yandex.project.service.user.model;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-import ru.yandex.project.service.event.model.Event;
+import lombok.Setter;
 import ru.yandex.project.service.user.dto.UserDto;
 import ru.yandex.project.service.user.dto.UserShortDto;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
-@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Setter
+@Getter
 @Entity
 @Table(name = "USER_TABLE")
 public class User {

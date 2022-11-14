@@ -11,13 +11,13 @@ public enum Message {
     UNAVAILABLE_EVENT("Event is unavailable yet"),
     INVALID_STATUS_TO_CHANGE("Only pending or canceled events can be changed");
 
-    private final String message;
+    private final String text;
 
-    Message(String message) {
-        this.message = message;
+    Message(String text) {
+        this.text = text;
     }
 
     public String get() {
-        return this.message;
+        return this.text;
     }
 }
