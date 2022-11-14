@@ -10,8 +10,8 @@ services:
       - SPRING_DATASOURCE_USERNAME=username
       - SPRING_DATASOURCE_PASSWORD=password
       - SPRING_DATASOURCE_URL=jdbc:h2:mem:resource
-    depends_on:
-      - gateway
+  #  depends_on:
+  #    - gateway
     ports:
       - "9091:9091"
 
@@ -24,7 +24,7 @@ services:
       - SPRING_DATASOURCE_USERNAME=username
       - SPRING_DATASOURCE_PASSWORD=password
       - SPRING_DATASOURCE_URL=jdbc:h2:mem:resource
-    depends_on:
-      - gateway
+ #   depends_on:
+ #     - gateway
     ports:
       - "9090:9090"
