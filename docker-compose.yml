@@ -1,7 +1,7 @@
 version: '3.1'
 services:
-
-  gateway:
+ ## gateway
+  ewm-service:
     build: ./api-gateway
     image: amazoncorretto:11-alpine-jdk
     container_name: gateway
@@ -11,8 +11,8 @@ services:
     ports:
       - "8080:8080"
 
-        
-  ewm-service:
+    ## ewm-service
+  gateway:
     build: ./service
     image: amazoncorretto:11-alpine-jdk
     container_name: service
@@ -22,7 +22,7 @@ services:
       - SPRING_DATASOURCE_PASSWORD=password
       - SPRING_DATASOURCE_URL=jdbc:h2:mem:resource
     depends_on:
-      - gateway
+      - ewm-service
     ports:
       - "9091:9091"
 
@@ -36,6 +36,6 @@ services:
       - SPRING_DATASOURCE_PASSWORD=password
       - SPRING_DATASOURCE_URL=jdbc:h2:mem:resource
     depends_on:
-      - gateway
+      - ewm-service
     ports:
       - "9090:9090"
