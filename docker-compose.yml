@@ -3,7 +3,7 @@ services:
   gateway:
     build: ./api-gateway
     image: amazoncorretto:11-alpine-jdk
-   # container_name: gateway
+    container_name: gateway
     environment:
       - EXPLORE-WITH-ME-SERVICE_URL=http://service:9091/explore-with-me-service
 
@@ -14,7 +14,7 @@ services:
   ewm-service:
     build: ./service
     image: amazoncorretto:11-alpine-jdk
-   # container_name: service
+    container_name: service
     environment:
       - EXPLORE-WITH-ME-STATISTICS_URL=http://stats:9090
       - SPRING_DATASOURCE_USERNAME=username
@@ -34,7 +34,7 @@ services:
   stats-server:
     build: ./statistics
     image: amazoncorretto:11-alpine-jdk
-  #  container_name: stats
+    container_name: stats
     environment:
       - SPRING_DATASOURCE_USERNAME=username
       - SPRING_DATASOURCE_PASSWORD=password

@@ -87,7 +87,7 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public EventFullDto addEvent(Long userId, NewEventDto eventDto) { //TODO logic of attaching views to event entity
+    public EventFullDto addEvent(Long userId, NewEventDto eventDto) {
         checkUserExists(userId);
         checkCategoryExists(eventDto.getCategory());
         eventDto.setInitiatorId(userId);
@@ -140,7 +140,7 @@ public class EventServiceImpl implements EventService {
 
         int views = statisticsClient.getViews(eventDto.getId());
         eventDto.setViews(views);
-        return eventDto; //TODO убрать костыли с лонг и инт
+        return eventDto;
     }
 
     @Override
@@ -310,8 +310,6 @@ public class EventServiceImpl implements EventService {
         eventDto.setViews(views);
         return eventDto;
     }
-
-    //TODO validate sort
     @Override
     public List<EventShortDto> getAllEvents(String[] categories,
                                             String text,
@@ -371,7 +369,7 @@ public class EventServiceImpl implements EventService {
             if (sort.equalsIgnoreCase(Sort.EVENT_DATE.name())) {
                 result = result.stream()
                         .sorted(Comparator.comparing(EventShortDto::getEventDate))
-                        .collect(Collectors.toList());
+                        .collect(Collectors.toUnmodifiableList());
             } else if (sort.equalsIgnoreCase(Sort.VIEWS.name())) {
                 result = result.stream()
                         .sorted(Comparator.comparing(EventShortDto::getViews))
