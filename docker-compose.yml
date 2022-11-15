@@ -2,6 +2,7 @@ version: '3.1'
 services:
   gateway:
     build: ./api-gateway
+    image: amazoncorretto:11-alpine-jdk
     container_name: gateway
     environment:
       - EXPLORE-WITH-ME-SERVICE_URL=http://service:9091/explore-with-me-service
@@ -10,23 +11,35 @@ services:
       - "8080:8080"
 
 
-  service:
+  ewm-service:
     build: ./service
+    image: amazoncorretto:11-alpine-jdk
     container_name: service
     environment:
       - EXPLORE-WITH-ME-STATISTICS_URL=http://stats:9090
+      - SPRING_DATASOURCE_USERNAME=username
+      - SPRING_DATASOURCE_PASSWORD=password
+      - SPRING_DATASOURCE_URL=jdbc:h2:mem:resource
     depends_on:
       - gateway
     ports:
       - "9091:9091"
 
+  ewm-db:
+    image: postgres:14-alpine
 
-  stats:
+  stats_db:
+    image: postgres:14-alpine
+
+  stats-server:
     build: ./statistics
+    image: amazoncorretto:11-alpine-jdk
     container_name: stats
+    environment:
+      - SPRING_DATASOURCE_USERNAME=username
+      - SPRING_DATASOURCE_PASSWORD=password
+      - SPRING_DATASOURCE_URL=jdbc:h2:mem:resource
     depends_on:
       - gateway
     ports:
       - "9090:9090"
-
-

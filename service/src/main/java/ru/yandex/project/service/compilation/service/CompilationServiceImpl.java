@@ -43,7 +43,7 @@ public class CompilationServiceImpl implements CompilationService {
     public List<CompilationDto> getCompilations(Boolean pinned, Long from, Long size) {
         return compilationRepository.findAllByPinnedIs(pinned, PageRequest.of(from.intValue(), size.intValue())).stream()
                 .map(Compilation::toDto)
-                .collect(Collectors.toList());
+                .collect(Collectors.toUnmodifiableList());
     }
 
     @Override

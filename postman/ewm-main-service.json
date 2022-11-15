@@ -4,7 +4,7 @@
     "name": "Test Explore With Me - Main service",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "13708500"
-  },
+  }, 
   "item": [
     {
       "name": "admin",

@@ -12,9 +12,4 @@ public class CompilationDto {
     private Boolean pinned;
     private String title;
     private List<EventShortDto> events = new ArrayList<>();
-
-    /*private Compilation toEntity() {
-        var compilation = new Compilation();
-        compilation.set
-    }*/
 }
