@@ -14,6 +14,7 @@ import ru.yandex.project.service.exception.NotParticipatorException;
 import ru.yandex.project.service.exception.UnavailableEventException;
 import ru.yandex.project.service.participationrequest.repository.ParticipationRequestRepository;
 import ru.yandex.project.service.participationrequest.status.RequestStatus;
+import ru.yandex.project.service.rating.dto.RatingDto;
 import ru.yandex.project.service.rating.repository.RatingRepository;
 import ru.yandex.project.service.rating.model.Rating;
 import ru.yandex.project.service.statistics.StatisticsClient;
@@ -21,6 +22,7 @@ import ru.yandex.project.service.user.repository.UserRepository;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static ru.yandex.project.service.exception.Message.*;
 
@@ -52,7 +54,7 @@ public class RatingServiceImpl implements RatingService {
     }
 
     @Override
-    public Rating likeEvent(Long eventId, Long userId) {
+    public RatingDto likeEvent(Long eventId, Long userId) {
         var event = getEventById(eventId);
         isValid(eventId, userId, event);
 
@@ -60,7 +62,7 @@ public class RatingServiceImpl implements RatingService {
         if (ratingRepository.checkDislike(eventId, userId) > 1) {
             ratingRepository.dislikeToLike(eventId, userId);
             return ratingRepository.findById(eventId)
-                    .orElseThrow(() -> new NotFoundException(RATING_NOT_FOUND.get()));
+                    .orElseThrow(() -> new NotFoundException(RATING_NOT_FOUND.get())).toDto();
         }
 
         // if like already exists, it will be deleted
@@ -68,7 +70,7 @@ public class RatingServiceImpl implements RatingService {
             ratingRepository.removeLike(eventId, userId);
 
             return ratingRepository.findById(eventId)
-                    .orElseThrow(() -> new NotFoundException(RATING_NOT_FOUND.get()));
+                    .orElseThrow(() -> new NotFoundException(RATING_NOT_FOUND.get())).toDto();
         }
 
         //if it is first like, it creates new record with likes and dislikes
@@ -78,11 +80,11 @@ public class RatingServiceImpl implements RatingService {
 
         ratingRepository.likeEvent(eventId, userId);
         return ratingRepository.findById(eventId)
-                .orElseThrow(() -> new NotFoundException(RATING_NOT_FOUND.get()));
+                .orElseThrow(() -> new NotFoundException(RATING_NOT_FOUND.get())).toDto();
     }
 
     @Override
-    public Rating dislikeEvent(Long eventId, Long userId) {
+    public RatingDto dislikeEvent(Long eventId, Long userId) {
         var event = getEventById(eventId);
         isValid(eventId, userId, event);
 
@@ -90,13 +92,13 @@ public class RatingServiceImpl implements RatingService {
         if (ratingRepository.checkDislike(eventId, userId) > 1) {
             ratingRepository.removeDislike(eventId, userId);
             return ratingRepository.findById(eventId)
-                    .orElseThrow(() -> new NotFoundException(RATING_NOT_FOUND.get()));
+                    .orElseThrow(() -> new NotFoundException(RATING_NOT_FOUND.get())).toDto();
         }
         //if like from this user already exists, it will be replaced with dislike
         if (ratingRepository.checkLike(eventId, userId) > 1) {
             ratingRepository.likeToDislike(eventId, userId);
             return ratingRepository.findById(eventId)
-                    .orElseThrow(() -> new NotFoundException(RATING_NOT_FOUND.get()));
+                    .orElseThrow(() -> new NotFoundException(RATING_NOT_FOUND.get())).toDto();
         }
         //if it is first dislike, it creates new record with likes and dislikes
         if (!ratingRepository.existsByEventId(eventId)) {
@@ -105,18 +107,22 @@ public class RatingServiceImpl implements RatingService {
 
         ratingRepository.dislikeEvent(eventId, userId);
         return ratingRepository.findById(eventId)
-                .orElseThrow(() -> new NotFoundException(RATING_NOT_FOUND.get()));
+                .orElseThrow(() -> new NotFoundException(RATING_NOT_FOUND.get())).toDto();
     }
 
     @Override
-    public List<Rating> getSortedEventsWithRating(Long size, String sort) {
+    public List<RatingDto> getSortedEventsWithRating(Long size, String sort) {
         switch (sort) {
             case SORT_LIKE:
                 return ratingRepository.findAllByOrderByLikesDesc(PageRequest.of(MIN_PAGEABLE_SIZE.intValue(),
-                        size.intValue()));
+                        size.intValue())).stream()
+                        .map(Rating::toDto)
+                        .collect(Collectors.toUnmodifiableList());
             case SORT_DISLIKE:
                 return ratingRepository.findAllByOrderByDislikesDesc(PageRequest.of(MIN_PAGEABLE_SIZE.intValue(),
-                        size.intValue()));
+                        size.intValue())).stream()
+                        .map(Rating::toDto)
+                        .collect(Collectors.toUnmodifiableList());
             default:
                 throw new UnsupportedOperationException(String.format(UNKNOWN_SORT_TYPE.get(), sort));
         }

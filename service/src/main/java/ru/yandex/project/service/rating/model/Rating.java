@@ -2,6 +2,7 @@ package ru.yandex.project.service.rating.model;
 
 import lombok.*;
 import ru.yandex.project.service.event.model.Event;
+import ru.yandex.project.service.rating.dto.RatingDto;
 
 import javax.persistence.*;
 
@@ -22,4 +23,12 @@ public class Rating {
     @JoinColumn(name = "EVENT_ID")
     @OneToOne
     private Event event;
+
+    public RatingDto toDto() {
+        var ratingDto = new RatingDto();
+        ratingDto.setEvent(event.toFullDto());
+        ratingDto.setDislikes(dislikes);
+        ratingDto.setLikes(likes);
+        return ratingDto;
+    }
 }
