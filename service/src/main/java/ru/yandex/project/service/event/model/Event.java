@@ -60,6 +60,7 @@ public class Event {
     private Boolean requestModeration;
     @Column(name = "TITLE")
     private String title;
+
     @Column(name = "STATUS")
     @Enumerated(EnumType.STRING)
     private EventStatus state;
