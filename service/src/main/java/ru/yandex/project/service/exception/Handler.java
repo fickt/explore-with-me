@@ -75,4 +75,31 @@ public class Handler {
         response.setMessage(e.getMessage());
         return new ResponseEntity<>(response, HttpStatus.FORBIDDEN);
     }
+
+    @ExceptionHandler
+    public ResponseEntity<ApiError> handleEventIsNotConductedException(EventIsNotConductedException e) {
+        var response = new ApiError();
+        response.setStatus(HttpStatus.FORBIDDEN.getReasonPhrase());
+        response.setReason(REASON_CONDITIONS_NOT_MET);
+        response.setMessage(e.getMessage());
+        return new ResponseEntity<>(response, HttpStatus.FORBIDDEN);
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<ApiError> handleNotParticipatorException(NotParticipatorException e) {
+        var response = new ApiError();
+        response.setStatus(HttpStatus.FORBIDDEN.getReasonPhrase());
+        response.setReason(REASON_CONDITIONS_NOT_MET);
+        response.setMessage(e.getMessage());
+        return new ResponseEntity<>(response, HttpStatus.FORBIDDEN);
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<ApiError> handleUnsupportedOperationException(UnsupportedOperationException e) {
+        var response = new ApiError();
+        response.setStatus(HttpStatus.CONFLICT.getReasonPhrase());
+        response.setReason(REASON_CONDITIONS_NOT_MET);
+        response.setMessage(e.getMessage());
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
 }

@@ -1,0 +1,2193 @@
+{
+	"info": {
+		"_postman_id": "38d60486-23e3-42e1-8d13-c1b11ef427fd",
+		"name": "Custom postman tests for Explore-with-me feature",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create eventCreator №1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});\r",
+							"pm.test(\"Test create eventCreator\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.id, '\"id\" field').to.eql(1);\r",
+							"    pm.expect(jsonData.email, '\"email\" field').to.eql('simpleasthat@gmail.com');\r",
+							"    pm.expect(jsonData.name, '\"name\" field').to.eql('eventCreator');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"eventCreator\",\r\n    \"email\":\"simpleasthat@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/admin/users",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"admin",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create user 1 №2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});\r",
+							"pm.test(\"Test create user 1\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.id, '\"id\" field').to.eql(2);\r",
+							"    pm.expect(jsonData.email, '\"email\" field').to.eql('user1email@gmail.com');\r",
+							"    pm.expect(jsonData.name, '\"name\" field').to.eql('user 1');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"user 1\",\r\n    \"email\":\"user1email@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/admin/users",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"admin",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create user 2 №3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});\r",
+							"pm.test(\"Test create user 2\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.id, '\"id\" field').to.eql(3);\r",
+							"    pm.expect(jsonData.email, '\"email\" field').to.eql('user2email@gmail.com');\r",
+							"    pm.expect(jsonData.name, '\"name\" field').to.eql('user 2');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"user 2\",\r\n    \"email\":\"user2email@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/admin/users",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"admin",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create user 3 №4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});\r",
+							"pm.test(\"Test create user 3\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.id, '\"id\" field').to.eql(4);\r",
+							"    pm.expect(jsonData.email, '\"email\" field').to.eql('user3email@gmail.com');\r",
+							"    pm.expect(jsonData.name, '\"name\" field').to.eql('user 3');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"user 3\",\r\n    \"email\":\"user3email@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/admin/users",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"admin",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create user 4 №5",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});\r",
+							"pm.test(\"Test create user 4\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.id, '\"id\" field').to.eql(5);\r",
+							"    pm.expect(jsonData.email, '\"email\" field').to.eql('user4email@gmail.com');\r",
+							"    pm.expect(jsonData.name, '\"name\" field').to.eql('user 4');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"user 4\",\r\n    \"email\":\"user4email@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/admin/users",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"admin",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create user 5 №6",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});\r",
+							"pm.test(\"Test create user 5\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.id, '\"id\" field').to.eql(6);\r",
+							"    pm.expect(jsonData.email, '\"email\" field').to.eql('user5email@gmail.com');\r",
+							"    pm.expect(jsonData.name, '\"name\" field').to.eql('user 5');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"user 5\",\r\n    \"email\":\"user5email@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/admin/users",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"admin",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create category №7",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});\r",
+							"pm.test(\"Test create category\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.id, '\"id\" field').to.eql(1);\r",
+							"    pm.expect(jsonData.name, '\"name\" field').to.eql('categoryName');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"categoryName\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/admin/categories",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"admin",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create event 1 №8",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});\r",
+							"pm.test(\"Test create event\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.id, '\"id\" field').to.eql(1);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"annotation\":\"annotation\",\r\n    \"description\":\"description\",\r\n    \"category\": 1,\r\n    \"location\": {\r\n        \"lat\": 1.0,\r\n        \"lon\": 2.0\r\n    },\r\n    \"eventDate\": \"2023-01-01 20:00:00\",\r\n    \"paid\": false,\r\n    \"participantLimit\": 0,\r\n    \"requestModeration\": true,\r\n    \"title\":\"title\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/users/1/events",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users",
+						"1",
+						"events"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Unsuccessful attemt to like unpublished event by user 1 №9",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 403\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([403]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/ratings/users/1/events/1/like",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"ratings",
+						"users",
+						"1",
+						"events",
+						"1",
+						"like"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin publishes event 1 №10",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/admin/events/1/publish",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"admin",
+						"events",
+						"1",
+						"publish"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Unsuccessful attemt to like unconducted event by user 1 №11",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 403\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([403]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/ratings/users/1/events/1/like",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"ratings",
+						"users",
+						"1",
+						"events",
+						"1",
+						"like"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Change date of event 1 to make it conducted №12",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"eventDate\":\"2022-11-11 20:00:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/admin/events/1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"admin",
+						"events",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Unsuccessful attemt to like event wthout Participation request №13",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 403\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([403]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/ratings/users/1/events/1/like",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"ratings",
+						"users",
+						"1",
+						"events",
+						"1",
+						"like"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User 1 creates participation request to event 1 №14",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/users/1/requests?eventId=1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users",
+						"1",
+						"requests"
+					],
+					"query": [
+						{
+							"key": "eventId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Unsuccessful attemt to like event without moderated request №15",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 403\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([403]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/ratings/users/1/events/1/like",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"ratings",
+						"users",
+						"1",
+						"events",
+						"1",
+						"like"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Confirm  request of user 1 №16",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/users/1/events/1/requests/1/confirm",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users",
+						"1",
+						"events",
+						"1",
+						"requests",
+						"1",
+						"confirm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Successful attemt to like event №17",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});\r",
+							"pm.test(\"Test create event\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.likes, '\"likes\" field').to.eql(1)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/ratings/users/1/events/1/like",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"ratings",
+						"users",
+						"1",
+						"events",
+						"1",
+						"like"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User 2 creates participation request to event 1 №18",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/users/2/requests?eventId=1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users",
+						"2",
+						"requests"
+					],
+					"query": [
+						{
+							"key": "eventId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User 3 creates participation request to event 1 №19",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/users/3/requests?eventId=1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users",
+						"3",
+						"requests"
+					],
+					"query": [
+						{
+							"key": "eventId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User 4 creates participation request to event 1 №20",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/users/4/requests?eventId=1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users",
+						"4",
+						"requests"
+					],
+					"query": [
+						{
+							"key": "eventId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User 5 creates participation request to event 1 №21",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/users/5/requests?eventId=1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users",
+						"5",
+						"requests"
+					],
+					"query": [
+						{
+							"key": "eventId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Confirm  request of user 2 №22",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/users/1/events/1/requests/2/confirm",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users",
+						"1",
+						"events",
+						"1",
+						"requests",
+						"2",
+						"confirm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Confirm  request of user 3 №23",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/users/1/events/1/requests/3/confirm",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users",
+						"1",
+						"events",
+						"1",
+						"requests",
+						"3",
+						"confirm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Confirm  request of user 4 №24",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/users/1/events/1/requests/4/confirm",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users",
+						"1",
+						"events",
+						"1",
+						"requests",
+						"4",
+						"confirm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Confirm  request of user 5 №25",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/users/1/events/1/requests/5/confirm",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users",
+						"1",
+						"events",
+						"1",
+						"requests",
+						"5",
+						"confirm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create event 2 №26",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});\r",
+							"pm.test(\"Test create event\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.id, '\"id\" field').to.eql(2);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"annotation\":\"annotation\",\r\n    \"description\":\"description\",\r\n    \"category\": 1,\r\n    \"location\": {\r\n        \"lat\": 1.0,\r\n        \"lon\": 2.0\r\n    },\r\n    \"eventDate\": \"2023-01-01 20:00:00\",\r\n    \"paid\": false,\r\n    \"participantLimit\": 0,\r\n    \"requestModeration\": true,\r\n    \"title\":\"title\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/users/1/events",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users",
+						"1",
+						"events"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin publishes event 2 №27",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/admin/events/2/publish",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"admin",
+						"events",
+						"2",
+						"publish"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Change date of event 2 to make it conducted №28",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"eventDate\":\"2022-11-11 20:00:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/admin/events/2",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"admin",
+						"events",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User 2 creates participation request to event 2 №29",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/users/2/requests?eventId=2",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users",
+						"2",
+						"requests"
+					],
+					"query": [
+						{
+							"key": "eventId",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User 3 creates participation request to event 2 №30",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/users/3/requests?eventId=2",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users",
+						"3",
+						"requests"
+					],
+					"query": [
+						{
+							"key": "eventId",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User 4 creates participation request to event 2 №31",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/users/4/requests?eventId=2",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users",
+						"4",
+						"requests"
+					],
+					"query": [
+						{
+							"key": "eventId",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User 5 creates participation request to event 2 №32",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/users/5/requests?eventId=2",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users",
+						"5",
+						"requests"
+					],
+					"query": [
+						{
+							"key": "eventId",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Confirm request of user 2 № 33",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/users/1/events/2/requests/6/confirm",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users",
+						"1",
+						"events",
+						"2",
+						"requests",
+						"6",
+						"confirm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Confirm request of user 3 № 34",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/users/1/events/2/requests/7/confirm",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users",
+						"1",
+						"events",
+						"2",
+						"requests",
+						"7",
+						"confirm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Confirm request of user 4 № 35",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/users/1/events/2/requests/8/confirm",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users",
+						"1",
+						"events",
+						"2",
+						"requests",
+						"8",
+						"confirm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Confirm request of user 5 № 36",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/users/1/events/2/requests/9/confirm",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users",
+						"1",
+						"events",
+						"2",
+						"requests",
+						"9",
+						"confirm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create event 3 №37",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});\r",
+							"pm.test(\"Test create event\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.id, '\"id\" field').to.eql(3);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"annotation\":\"annotation\",\r\n    \"description\":\"description\",\r\n    \"category\": 1,\r\n    \"location\": {\r\n        \"lat\": 1.0,\r\n        \"lon\": 2.0\r\n    },\r\n    \"eventDate\": \"2023-01-01 20:00:00\",\r\n    \"paid\": false,\r\n    \"participantLimit\": 0,\r\n    \"requestModeration\": true,\r\n    \"title\":\"title\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/users/1/events",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users",
+						"1",
+						"events"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin publishes event 3 №38",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/admin/events/3/publish",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"admin",
+						"events",
+						"3",
+						"publish"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Change date of event 3 to make it conducted №39",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"eventDate\":\"2022-11-11 20:00:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/admin/events/1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"admin",
+						"events",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User 2 creates participation request to event 3 №40",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/users/2/requests?eventId=3",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users",
+						"2",
+						"requests"
+					],
+					"query": [
+						{
+							"key": "eventId",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User 3 creates participation request to event 3 №41",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/users/3/requests?eventId=3",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users",
+						"3",
+						"requests"
+					],
+					"query": [
+						{
+							"key": "eventId",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User 4 creates participation request to event 3 №42",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/users/4/requests?eventId=3",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users",
+						"4",
+						"requests"
+					],
+					"query": [
+						{
+							"key": "eventId",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User 5 creates participation request to event 3 №43",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/users/5/requests?eventId=3",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users",
+						"5",
+						"requests"
+					],
+					"query": [
+						{
+							"key": "eventId",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Confirm request of user 2 №44",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/users/1/events/3/requests/10/confirm",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users",
+						"1",
+						"events",
+						"3",
+						"requests",
+						"10",
+						"confirm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Confirm request of user 3 №45",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/users/1/events/3/requests/11/confirm",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users",
+						"1",
+						"events",
+						"3",
+						"requests",
+						"11",
+						"confirm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Confirm request of user 4 №46",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/users/1/events/3/requests/12/confirm",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users",
+						"1",
+						"events",
+						"3",
+						"requests",
+						"12",
+						"confirm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Confirm request of user 5 №47",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/users/1/events/3/requests/13/confirm",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users",
+						"1",
+						"events",
+						"3",
+						"requests",
+						"13",
+						"confirm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User 2 likes event 1 №48",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/ratings/users/2/events/1/like",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"ratings",
+						"users",
+						"2",
+						"events",
+						"1",
+						"like"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User 3 likes event 1 №49",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/ratings/users/3/events/1/like",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"ratings",
+						"users",
+						"3",
+						"events",
+						"1",
+						"like"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User 4 likes event 1 № 50",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/ratings/users/4/events/1/like",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"ratings",
+						"users",
+						"4",
+						"events",
+						"1",
+						"like"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User 5 likes event 2 №51",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/ratings/users/5/events/2/like",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"ratings",
+						"users",
+						"5",
+						"events",
+						"2",
+						"like"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get events sorted by likes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});\r",
+							"pm.test(\"Get events sorted by like\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData[0].likes, 'result[0]: \"likes\" field').to.eql(4);\r",
+							"    pm.expect(jsonData[1].likes, 'result[1]: \"likes\" field').to.eql(1);\r",
+							"    pm.expect(jsonData[2].likes, 'result[2]: \"likes\" field').to.eql(0);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/ratings?sort=DISLIKE&size=10",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"ratings"
+					],
+					"query": [
+						{
+							"key": "sort",
+							"value": "DISLIKE"
+						},
+						{
+							"key": "size",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User 2 dislikes event 1 №53",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/ratings/users/2/events/1/dislike",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"ratings",
+						"users",
+						"2",
+						"events",
+						"1",
+						"dislike"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User 3 dislikes event 1 №54",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/ratings/users/3/events/1/dislike",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"ratings",
+						"users",
+						"3",
+						"events",
+						"1",
+						"dislike"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User 4 dislikes event 1 №55",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/ratings/users/4/events/1/dislike",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"ratings",
+						"users",
+						"4",
+						"events",
+						"1",
+						"dislike"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get events sorted by dislikes №56",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get events sorted by dislike\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData[0].dislikes, 'result[0]: \"dislikes\" field').to.eql(3);\r",
+							"    pm.expect(jsonData[1].dislikes, 'result[1]: \"dislikes\" field').to.eql(0);\r",
+							"    pm.expect(jsonData[2].dislikes, 'result[2]: \"dislikes\" field').to.eql(0);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/ratings?sort=DISLIKE&size=10",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"ratings"
+					],
+					"query": [
+						{
+							"key": "sort",
+							"value": "DISLIKE"
+						},
+						{
+							"key": "size",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080",
+			"type": "default"
+		}
+	]
+}

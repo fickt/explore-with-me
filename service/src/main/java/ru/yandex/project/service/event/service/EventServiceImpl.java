@@ -15,6 +15,7 @@ import ru.yandex.project.service.participationrequest.dto.ParticipationRequestDt
 import ru.yandex.project.service.participationrequest.model.ParticipationRequest;
 import ru.yandex.project.service.participationrequest.repository.ParticipationRequestRepository;
 import ru.yandex.project.service.participationrequest.status.RequestStatus;
+import ru.yandex.project.service.rating.repository.RatingRepository;
 import ru.yandex.project.service.statistics.EndpointHit;
 import ru.yandex.project.service.statistics.StatisticsClient;
 import ru.yandex.project.service.user.model.User;
@@ -44,18 +45,21 @@ public class EventServiceImpl implements EventService {
     private final CategoryRepository categoryRepository;
     private final ParticipationRequestRepository requestRepository;
     private final StatisticsClient statisticsClient;
+    private final RatingRepository ratingRepository;
 
     @Autowired
     public EventServiceImpl(EventRepository eventRepository,
                             UserRepository userRepository,
                             CategoryRepository categoryRepository,
                             ParticipationRequestRepository requestRepository,
-                            StatisticsClient statisticsClient) {
+                            StatisticsClient statisticsClient,
+                            RatingRepository ratingRepository) {
         this.eventRepository = eventRepository;
         this.userRepository = userRepository;
         this.categoryRepository = categoryRepository;
         this.requestRepository = requestRepository;
         this.statisticsClient = statisticsClient;
+        this.ratingRepository = ratingRepository;
     }
 
     @Override
@@ -94,7 +98,9 @@ public class EventServiceImpl implements EventService {
         var event = eventDto.toEventEntity();
         event.setInitiator(getUserById(eventDto.getInitiatorId()));
         event.setCategory(getCategoryById(eventDto.getCategory()));
-        return eventRepository.save(event).toFullDto();
+        var persistedEventDto = eventRepository.save(event).toFullDto();
+        ratingRepository.createNewRating(persistedEventDto.getId());
+        return persistedEventDto;
     }
 
     @Override
@@ -303,13 +309,14 @@ public class EventServiceImpl implements EventService {
             event.setDescription(updateEventRequest.getDescription());
         }
 
-         var eventDto = eventRepository.save(event).toFullDto();
+        var eventDto = eventRepository.save(event).toFullDto();
 
 
         int views = statisticsClient.getViews(eventDto.getId());
         eventDto.setViews(views);
         return eventDto;
     }
+
     @Override
     public List<EventShortDto> getAllEvents(String[] categories,
                                             String text,

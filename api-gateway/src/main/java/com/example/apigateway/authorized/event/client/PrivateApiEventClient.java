@@ -41,8 +41,8 @@ public class PrivateApiEventClient {
     public ResponseEntity<Object> getEventById(Long userId, Long eventId) {
         try {
             var params = Map.of(
-                    "userId", String.valueOf(userId),
-                    "eventId", String.valueOf(eventId)
+                    "userId", userId,
+                    "eventId", eventId
             );
             return restTemplate.exchange(ENDPOINT_GET_EVENT_BY_ID, HttpMethod.GET, null, Object.class, params);
         } catch (HttpStatusCodeException e) {
@@ -53,7 +53,7 @@ public class PrivateApiEventClient {
     public ResponseEntity<Object> addEvent(Long userId, NewEventDto eventDto) {
         eventDto.setCreatedOn(LocalDateTime.now());
         try {
-            var params = Map.of("userId", String.valueOf(userId));
+            var params = Map.of("userId", userId);
             return restTemplate.exchange(ENDPOINT_ADD_EVENT, HttpMethod.POST, new HttpEntity<>(eventDto, setHeaders()), Object.class, params);
         } catch (HttpStatusCodeException e) {
             return ResponseEntity.status(e.getStatusCode()).body(e.getResponseBodyAsByteArray());
@@ -62,7 +62,7 @@ public class PrivateApiEventClient {
 
     public ResponseEntity<Object> editEvent(Long userId, UpdateEventRequest eventRequest) {
         try {
-            var params = Map.of("userId", String.valueOf(userId));
+            var params = Map.of("userId", userId);
             return restTemplate.exchange(ENDPOINT_EDIT_EVENT, HttpMethod.PATCH, new HttpEntity<>(eventRequest, setHeaders()), Object.class, params);
         } catch (HttpStatusCodeException e) {
             return ResponseEntity.status(e.getStatusCode()).body(e.getResponseBodyAsByteArray());
@@ -105,9 +105,9 @@ public class PrivateApiEventClient {
     public ResponseEntity<Object> confirmRequestOfUser(Long userId, Long eventId, Long reqId) {
         try {
             var params = Map.of(
-                    "userId", String.valueOf(userId),
-                    "eventId", String.valueOf(eventId),
-                    "reqId", String.valueOf(reqId)
+                    "userId", userId,
+                    "eventId", eventId,
+                    "reqId", reqId
             );
             return restTemplate.exchange(ENDPOINT_CONFIRM_REQUEST, HttpMethod.PATCH, null, Object.class, params);
         } catch (HttpStatusCodeException e) {
@@ -118,9 +118,9 @@ public class PrivateApiEventClient {
     public ResponseEntity<Object> rejectRequestOfUser(Long userId, Long eventId, Long reqId) {
         try {
             var params = Map.of(
-                    "userId", String.valueOf(userId),
-                    "eventId", String.valueOf(eventId),
-                    "reqId", String.valueOf(reqId)
+                    "userId", userId,
+                    "eventId", eventId,
+                    "reqId", reqId
             );
             return restTemplate.exchange(ENDPOINT_REJECT_REQUEST, HttpMethod.PATCH, null, Object.class, params);
         } catch (HttpStatusCodeException e) {
