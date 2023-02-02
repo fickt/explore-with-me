@@ -49,7 +49,7 @@ public class ParticipationRequestServiceImpl implements ParticipationRequestServ
         checkUserExists(userId);
         return requestRepository.findAllByRequester(userId).stream()
                 .map(ParticipationRequest::toDto)
-                .collect(Collectors.toList());
+                .collect(Collectors.toUnmodifiableList());
     }
 
     @Override

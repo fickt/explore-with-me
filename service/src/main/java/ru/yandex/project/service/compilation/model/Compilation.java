@@ -1,8 +1,6 @@
 package ru.yandex.project.service.compilation.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import ru.yandex.project.service.compilation.dto.CompilationDto;
 import ru.yandex.project.service.event.model.Event;
 
@@ -11,9 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Setter
+@Getter
 @Entity
 @Table(name = "COMPILATION_TABLE")
 public class Compilation {
@@ -38,7 +37,7 @@ public class Compilation {
         dto.setId(id);
         dto.setEvents(events.stream()
                 .map(Event::toShortDto)
-                .collect(Collectors.toList()));
+                .collect(Collectors.toUnmodifiableList()));
         dto.setPinned(pinned);
         dto.setTitle(title);
         return dto;

@@ -14,7 +14,10 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Setter
+@Getter
 @Table(name = "EVENT_TABLE")
 public class Event {
     @Id
@@ -57,6 +60,7 @@ public class Event {
     private Boolean requestModeration;
     @Column(name = "TITLE")
     private String title;
+
     @Column(name = "STATUS")
     @Enumerated(EnumType.STRING)
     private EventStatus state;

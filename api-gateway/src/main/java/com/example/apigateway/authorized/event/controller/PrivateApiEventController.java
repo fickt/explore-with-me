@@ -84,5 +84,4 @@ public class PrivateApiEventController {
         return client.rejectRequestOfUser(userId, eventId, reqId);
     }
 
-
 }

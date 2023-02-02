@@ -6,9 +6,11 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import ru.yandex.project.service.participationrequest.model.ParticipationRequest;
+import ru.yandex.project.service.participationrequest.status.RequestStatus;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface ParticipationRequestRepository extends JpaRepository<ParticipationRequest, Long> {
@@ -23,4 +25,6 @@ public interface ParticipationRequestRepository extends JpaRepository<Participat
     void changeStatusOfPendingRequestsToRejected(Long eventId, String status);
 
     List<ParticipationRequest> findAllByIdNotNull();
+
+    Optional<ParticipationRequest> findByRequesterAndEventAndStatus(Long userId, Long eventId, RequestStatus status);
 }

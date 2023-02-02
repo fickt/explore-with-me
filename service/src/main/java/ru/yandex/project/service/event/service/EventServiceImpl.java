@@ -15,6 +15,7 @@ import ru.yandex.project.service.participationrequest.dto.ParticipationRequestDt
 import ru.yandex.project.service.participationrequest.model.ParticipationRequest;
 import ru.yandex.project.service.participationrequest.repository.ParticipationRequestRepository;
 import ru.yandex.project.service.participationrequest.status.RequestStatus;
+import ru.yandex.project.service.rating.repository.RatingRepository;
 import ru.yandex.project.service.statistics.EndpointHit;
 import ru.yandex.project.service.statistics.StatisticsClient;
 import ru.yandex.project.service.user.model.User;
@@ -44,18 +45,21 @@ public class EventServiceImpl implements EventService {
     private final CategoryRepository categoryRepository;
     private final ParticipationRequestRepository requestRepository;
     private final StatisticsClient statisticsClient;
+    private final RatingRepository ratingRepository;
 
     @Autowired
     public EventServiceImpl(EventRepository eventRepository,
                             UserRepository userRepository,
                             CategoryRepository categoryRepository,
                             ParticipationRequestRepository requestRepository,
-                            StatisticsClient statisticsClient) {
+                            StatisticsClient statisticsClient,
+                            RatingRepository ratingRepository) {
         this.eventRepository = eventRepository;
         this.userRepository = userRepository;
         this.categoryRepository = categoryRepository;
         this.requestRepository = requestRepository;
         this.statisticsClient = statisticsClient;
+        this.ratingRepository = ratingRepository;
     }
 
     @Override
@@ -87,14 +91,16 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public EventFullDto addEvent(Long userId, NewEventDto eventDto) { //TODO logic of attaching views to event entity
+    public EventFullDto addEvent(Long userId, NewEventDto eventDto) {
         checkUserExists(userId);
         checkCategoryExists(eventDto.getCategory());
         eventDto.setInitiatorId(userId);
         var event = eventDto.toEventEntity();
         event.setInitiator(getUserById(eventDto.getInitiatorId()));
         event.setCategory(getCategoryById(eventDto.getCategory()));
-        return eventRepository.save(event).toFullDto();
+        var persistedEventDto = eventRepository.save(event).toFullDto();
+        ratingRepository.createNewRating(persistedEventDto.getId());
+        return persistedEventDto;
     }
 
     @Override
@@ -140,7 +146,7 @@ public class EventServiceImpl implements EventService {
 
         int views = statisticsClient.getViews(eventDto.getId());
         eventDto.setViews(views);
-        return eventDto; //TODO убрать костыли с лонг и инт
+        return eventDto;
     }
 
     @Override
@@ -149,7 +155,7 @@ public class EventServiceImpl implements EventService {
         return eventRepository.findAllByInitiatorId(userId).stream()
                 .map(Event::toShortDto)
                 .peek(o -> o.setViews(statisticsClient.getViews(o.getId())))
-                .collect(Collectors.toList());
+                .collect(Collectors.toUnmodifiableList());
     }
 
     @Override
@@ -184,10 +190,10 @@ public class EventServiceImpl implements EventService {
         log.info("EventService getRequestOfUserInEvent({},{})", userId, eventId);
         /*return requestRepository.findAllByRequesterAndEvent(userId, eventId).stream() -- правильное решение
                 .map(ParticipationRequest::toDto)
-                .collect(Collectors.toList());*/
+                .collect(Collectors.toUnmodifiableList());*/
         return requestRepository.findAllByIdNotNull().stream()
                 .map(ParticipationRequest::toDto)
-                .collect(Collectors.toList());
+                .collect(Collectors.toUnmodifiableList());
     }
 
     @Override
@@ -303,7 +309,7 @@ public class EventServiceImpl implements EventService {
             event.setDescription(updateEventRequest.getDescription());
         }
 
-         var eventDto = eventRepository.save(event).toFullDto();
+        var eventDto = eventRepository.save(event).toFullDto();
 
 
         int views = statisticsClient.getViews(eventDto.getId());
@@ -311,7 +317,6 @@ public class EventServiceImpl implements EventService {
         return eventDto;
     }
 
-    //TODO validate sort
     @Override
     public List<EventShortDto> getAllEvents(String[] categories,
                                             String text,
@@ -353,7 +358,7 @@ public class EventServiceImpl implements EventService {
                     ).stream()
                     .map(Event::toShortDto)
                     .peek(o -> o.setViews(statisticsClient.getViews(o.getId())))
-                    .collect(Collectors.toList());
+                    .collect(Collectors.toUnmodifiableList());
         } else {
             result = eventRepository.getAllEvents(PageRequest.of(from.intValue(), size.intValue()),
                             text,
@@ -364,18 +369,18 @@ public class EventServiceImpl implements EventService {
                             rangeEndAsLocalDateTime).stream()
                     .map(Event::toShortDto)
                     .peek(o -> o.setViews(statisticsClient.getViews(o.getId())))
-                    .collect(Collectors.toList());
+                    .collect(Collectors.toUnmodifiableList());
         }
 
         if (!sort.isBlank()) {
             if (sort.equalsIgnoreCase(Sort.EVENT_DATE.name())) {
                 result = result.stream()
                         .sorted(Comparator.comparing(EventShortDto::getEventDate))
-                        .collect(Collectors.toList());
+                        .collect(Collectors.toUnmodifiableList());
             } else if (sort.equalsIgnoreCase(Sort.VIEWS.name())) {
                 result = result.stream()
                         .sorted(Comparator.comparing(EventShortDto::getViews))
-                        .collect(Collectors.toList());
+                        .collect(Collectors.toUnmodifiableList());
             }
         }
         return result;
@@ -415,7 +420,7 @@ public class EventServiceImpl implements EventService {
                         rangeEndAsLocalDateTime).stream()
                 .map(Event::toFullDto)
                 .peek(o -> o.setViews(statisticsClient.getViews(o.getId())))
-                .collect(Collectors.toList());
+                .collect(Collectors.toUnmodifiableList());
     }
 
     /**
@@ -431,7 +436,7 @@ public class EventServiceImpl implements EventService {
                 .map(o -> o.replaceAll("\\W", ""))
                 .filter(o -> !o.isBlank())
                 .map(Long::parseLong)
-                .collect(Collectors.toList());
+                .collect(Collectors.toUnmodifiableList());
     }
 
     private List<EventStatus> convertStringArrayToEventStatusList(String[] arr) {
@@ -441,7 +446,7 @@ public class EventServiceImpl implements EventService {
                 .filter(o -> !o.isBlank())
                 .map(String::toString)
                 .map(EventStatus::valueOf)
-                .collect(Collectors.toList());
+                .collect(Collectors.toUnmodifiableList());
     }
 
     private Event getEventById(Long eventId) {
