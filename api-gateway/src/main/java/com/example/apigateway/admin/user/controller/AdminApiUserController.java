@@ -25,7 +25,7 @@ public class AdminApiUserController {
     private final AdminApiUserClient client;
 
     @Autowired
-    AdminApiUserController(AdminApiUserClient client) {
+    public AdminApiUserController(AdminApiUserClient client) {
         this.client = client;
     }
 

@@ -48,12 +48,12 @@ public class EventController {
 
     @GetMapping(ENDPOINT_GET_EVENTS_ADMIN)
     public List<EventFullDto> getAllEventsAdmin(@RequestParam(value = "users", required = false) String[] users,
-                                                 @RequestParam(value = "states", required = false) String[] states,
-                                                 @RequestParam(value = "rangeStart", required = false) String rangeStart,
-                                                 @RequestParam(value = "rangeEnd", required = false) String rangeEnd,
-                                                 @RequestParam(value = "from", required = false) Long from,
-                                                 @RequestParam(value = "size", required = false) Long size,
-                                                 @RequestParam(value = "categories", required = false) String[] categories) {
+                                                @RequestParam(value = "states", required = false) String[] states,
+                                                @RequestParam(value = "rangeStart", required = false) String rangeStart,
+                                                @RequestParam(value = "rangeEnd", required = false) String rangeEnd,
+                                                @RequestParam(value = "from", required = false) Long from,
+                                                @RequestParam(value = "size", required = false) Long size,
+                                                @RequestParam(value = "categories", required = false) String[] categories) {
         log.info("GET events/admin");
         return eventService.getAllEventsAdmin(users, states, categories, rangeStart, rangeEnd, from, size);
     }
@@ -97,7 +97,7 @@ public class EventController {
 
     @PatchMapping(ENDPOINT_CONFIRM_REQUEST)
     public ParticipationRequestDto confirmRequestOfUser(@PathVariable Long userId, @PathVariable Long eventId, @PathVariable Long reqId) {
-        log.info("PATCH events/{}/users/{}/requests/{}/confirm", eventId, userId,reqId);
+        log.info("PATCH events/{}/users/{}/requests/{}/confirm", eventId, userId, reqId);
         return eventService.confirmRequestOfUser(userId, eventId, reqId);
     }
 
@@ -127,6 +127,7 @@ public class EventController {
 
     /**
      * Endpoint is POST as it has to receive RequestBody for statistics service
+     *
      * @param hit - info for statistics
      */
     @PostMapping(ENDPOINT_EVENT_ID)
